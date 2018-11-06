@@ -25,7 +25,13 @@ Route::prefix('/welcome')->group(function(){
 
 
 Route::get('/room','RoomController@list');
+Route::get('/room/create','RoomController@create');
+Route::post('/room/store','RoomController@store');
+Route::get('/room/edit/{id}','RoomController@edit');
+Route::patch('/room/update/{id}','RoomController@update');
+Route::delete('/room/delete/{id}','RoomController@delete');
 
+Route::resource('/category','CategoryController');
 
 Route::post('/', function () {
     return view('welcome');

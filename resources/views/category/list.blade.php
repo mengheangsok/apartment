@@ -7,8 +7,8 @@
 <body>
 	<div class="container">
 		<br>
-		<h3 class="float-left">Rooms</h3>
-		<a href="{{ url('/room/create') }}" class="btn btn-primary float-right">Create</a>
+		<h3 class="float-left">categories</h3>
+		<a href="{{ url('/category/create') }}" class="btn btn-primary float-right">Create</a>
 		<div class="clearfix"></div>
 		<table class="table mt-3">
 			<thead>
@@ -22,15 +22,15 @@
 			</thead>
 			@php $n = 1 @endphp
 			<tbody>
-				@foreach($rooms as $room)
+				@foreach($categories as $category)
 					<tr>
 						<td>{{ $n++ }}</td>
-						<td>{{ $room->name }}</td>
-						<td>{{ $room->price }}</td>
-						<td>{{ $room->description }}</td>
+						<td>{{ $category->name }}</td>
+						<td>{{ $category->price }}</td>
+						<td>{{ $category->description }}</td>
 						<td>
-							<a href="{{ url('/room/edit/'. $room->id) }}" class="btn btn-info btn-sm"> Edit</a>
-							<form action="{{ url('/room/delete/'. $room->id) }}" method="post">
+							<a href="{{ url('/category/edit/'. $category->id) }}" class="btn btn-info btn-sm"> Edit</a>
+							<form action="{{ url('/category/delete/'. $category->id) }}" method="post">
 								@csrf
 								{{ method_field('DELETE') }}
 								<button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
@@ -42,7 +42,7 @@
 
 		</table>
 
-		{{ $rooms->links() }}
+		{{ $categories->links() }}
 	</div>
 </body>
 </html>
