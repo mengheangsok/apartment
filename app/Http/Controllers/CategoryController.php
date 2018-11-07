@@ -39,7 +39,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:10|alpha'
+            'name' => 'required|max:10'
         ],[
             'name.required' => 'ទាមទារ', 
         ]);
@@ -70,7 +70,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -82,7 +84,17 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:10'
+        ],[
+            'name.required' => 'ទាមទារ', 
+        ]);
+
+        $category = Category::find($id)
+                    ->fill($request->all())
+                    ->save();
+
+        return redirect('/category')->with('message','Successfully Updated');
     }
 
     /**
@@ -93,6 +105,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = Category::whereId($id)->delete();
+
+        return redirect('/category')->with('message','Successfully Deleted');
     }
 }

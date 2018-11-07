@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    protected $table = 'unit';
-    protected $id = 'unit_id';
+    public function category(){
+    	return $this->belongsTo('App\Category','cate_id','id');
+    } 
     
 }

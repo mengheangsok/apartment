@@ -5,25 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // use Illuminate\Support\Facades\DB;
 use DB;
-
+use App\Room;
+use App\Category;
 
 class RoomController extends Controller
 {
 	public function list(Request $request){
 
-		$rooms = DB::table('rooms')->paginate(2);
+	//	$rooms = DB::table('rooms')->paginate(2);
+		$rooms = Room::paginate(2);
 
 		return view('room.list',compact('rooms'));
 	}
 
 	public function create(){
 
-		return view('room.create');
+		$categories = Category::all();
+
+		return view('room.create',compact('categories'));
 	}
 
 	public function store(Request $request){
 
 		$rooms = DB::table('rooms')->insert([
+			'category_id' => $request->category,
 			'name' => $request->name,
 			'price' => $request->price,
 			'description' => $request->description,

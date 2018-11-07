@@ -5,8 +5,14 @@
     <link href="/css/app.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+
 	<div class="container">
 		<br>
+		@if(session('message'))
+			<div class="alert alert-info">
+				{{ session('message') }}
+			</div>
+		@endif
 		<h3 class="float-left">categories</h3>
 		<a href="{{ url('/category/create') }}" class="btn btn-primary float-right">Create</a>
 		<div class="clearfix"></div>
@@ -14,9 +20,8 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Room</th>
 					<th>Name</th>
-					<th>Price</th>
-					<th>Description</th>
 					<th>Option</th>
 				</tr>
 			</thead>
@@ -25,15 +30,20 @@
 				@foreach($categories as $category)
 					<tr>
 						<td>{{ $n++ }}</td>
-						<td>{{ $category->name }}</td>
-						<td>{{ $category->price }}</td>
-						<td>{{ $category->description }}</td>
 						<td>
-							<a href="{{ url('/category/edit/'. $category->id) }}" class="btn btn-info btn-sm"> Edit</a>
-							<form action="{{ url('/category/delete/'. $category->id) }}" method="post">
+								<ul>
+							@foreach($category->room as $room)
+									<li>{{ $room->name }}</li>
+							@endforeach							
+								</ul>
+						</td>
+						<td>{{ $category->name }}</td>
+						<td>
+							<a href="{{ url('/category/'. $category->id.'/edit') }}" class="btn btn-info btn-sm float-left mr-2"> Edit</a>
+							<form action="{{ url('/category/'. $category->id) }}" method="post">
 								@csrf
 								{{ method_field('DELETE') }}
-								<button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+								<button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
 							</form>
 						</td>
 					</tr>

@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+})->name('welcomePage');
+
+
 Route::prefix('/welcome')->group(function(){
 	
 	Route::get('/{id}', function () {

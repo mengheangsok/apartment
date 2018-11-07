@@ -14,6 +14,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<th>Category</th>
 					<th>Name</th>
 					<th>Price</th>
 					<th>Description</th>
@@ -25,6 +26,7 @@
 				@foreach($rooms as $room)
 					<tr>
 						<td>{{ $n++ }}</td>
+						<td>{{ $room->category ? $room->category->name : '--' }}</td>
 						<td>{{ $room->name }}</td>
 						<td>{{ $room->price }}</td>
 						<td>{{ $room->description }}</td>

@@ -19,6 +19,18 @@
 		<label>Price</label>
 		<input type="text" class="form-control" name="price">
 	</div>
+
+	<div class="form-group">
+		<label>Category</label>
+		<select name="category" class="form-control">
+			<option value="">Choose One</option>
+			@foreach($categories as $category)
+				<option value="{{ $category->id }}">{{ $category->name }}</option>
+			@endforeach
+		</select>
+	</div>
+
+
 	<div class="form-group">
 		<label>Description</label>
 		<textarea name="description" class="form-control"></textarea>
