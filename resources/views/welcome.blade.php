@@ -81,9 +81,6 @@
                 <div class="title m-b-md">
                     Laravel 5.7
                 </div>
-
-                <a href="{{ route('welcomePage',['id' => 123]) }}">Go to welcome page</a>
-
                 <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
                     <a href="https://laracasts.com">Laracasts</a>

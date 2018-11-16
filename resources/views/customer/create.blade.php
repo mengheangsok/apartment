@@ -7,14 +7,14 @@
 <body>
 
 <div class="container">
-<h3>Create Category</h3>
+<h3>Create Customer</h3>
 @if($errors->any())
 	<div class="alert alert-danger">
 		The given data is invalid.
 	</div>
 @endif
 
-<form action="{{ url('/category') }}" method="post">
+<form action="{{ url('/customer') }}" method="post">
 	@csrf
 	<div class="form-group">
 		<label>Name</label>

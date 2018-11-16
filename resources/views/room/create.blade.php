@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-	<link href="/css/app.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-
-<div class="container">
+@extends('layouts.master')
+@section('content')
 <h3>Create Rooms</h3>
 <form action="{{ url('/room/store') }}" method="post">
 	@csrf
@@ -39,8 +32,4 @@
 		<button class="btn btn-primary">Submit</button>
 	</div>
 </form>
-
-
-
-</body>
-</html>
+@endsection

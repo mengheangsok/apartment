@@ -8,11 +8,8 @@
 
 	<div class="container">
 		<br>
-		@if(session('message'))
-			<div class="alert alert-info">
-				{{ session('message') }}
-			</div>
-		@endif
+		@include('components.alert')
+		
 		<h3 class="float-left">categories</h3>
 		<a href="{{ url('/category/create') }}" class="btn btn-primary float-right">Create</a>
 		<div class="clearfix"></div>

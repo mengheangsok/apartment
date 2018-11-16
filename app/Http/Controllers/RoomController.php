@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use DB;
 use App\Room;
 use App\Category;
+use App\Http\Requests\RoomRequest;
 
 class RoomController extends Controller
 {
@@ -14,7 +15,7 @@ class RoomController extends Controller
 
 	//	$rooms = DB::table('rooms')->paginate(2);
 		$rooms = Room::paginate(2);
-
+		
 		return view('room.list',compact('rooms'));
 	}
 
@@ -25,7 +26,7 @@ class RoomController extends Controller
 		return view('room.create',compact('categories'));
 	}
 
-	public function store(Request $request){
+	public function store(RoomRequest $request){
 
 		$rooms = DB::table('rooms')->insert([
 			'category_id' => $request->category,
@@ -42,10 +43,12 @@ class RoomController extends Controller
 
 		$room = DB::table('rooms')->where('id',$id)->first();
 
-		return view('room.edit',compact('room'));
+		$categories = Category::all();
+
+		return view('room.edit',compact('room','categories'));
 	}
 
-	public function update($id, Request $request){
+	public function update($id, RoomRequest $request){
 		$room = DB::table('rooms')->where('id',$id)->update([
 			'name' => $request->name,
 			'price' => $request->price,

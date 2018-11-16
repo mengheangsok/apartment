@@ -7,6 +7,7 @@
 <body>
 
 <div class="container">
+
 <h3>Edit Rooms</h3>
 <form action="{{ url('/room/update/'. $room->id) }}" method="post">
 	@csrf
@@ -20,6 +21,17 @@
 		<label>Price</label>
 		<input type="text" value="{{ $room->price }}" class="form-control" name="price">
 	</div>
+
+	<div class="form-group">
+		<label>Category</label>
+		<select name="category" class="form-control">
+			<option value="">Choose One</option>
+			@foreach($categories as $category)
+				<option {{ $category->id == $room->category_id ? 'selected' : '' }} value="{{ $category->id }}">{{ $category->name }}</option>
+			@endforeach
+		</select>
+	</div>
+
 	<div class="form-group">
 		<label>Description</label>
 		<textarea name="description" class="form-control">{{ $room->description }}</textarea>

@@ -28,6 +28,9 @@ Route::prefix('/welcome')->group(function(){
 
 });
 
+Route::post('/logintest','LoginController@authenticate')->name('logintest');
+
+Route::middleware(['auth'])->group(function () {
 
 Route::get('/room','RoomController@list');
 Route::get('/room/create','RoomController@create');
@@ -37,9 +40,12 @@ Route::patch('/room/update/{id}','RoomController@update');
 Route::delete('/room/delete/{id}','RoomController@delete');
 
 Route::resource('/category','CategoryController');
+Route::resource('/user','UserController');
+Route::resource('/rent','RentController');
 
-Route::post('/', function () {
-    return view('welcome');
 });
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
