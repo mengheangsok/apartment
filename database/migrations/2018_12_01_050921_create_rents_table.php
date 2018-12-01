@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCustomerRoomTable extends Migration
+class CreateRentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateCustomerRoomTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_room', function (Blueprint $table) {
+        Schema::create('rents', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('room_id')->unsigned()->nullable();
-            $table->integer('customer_id')->unsigned()->nullable();
-            $table->decimal('price');
-            $table->text('description')->nullable();
+            $table->integer('room_id')->unsigned();
+            $table->integer('customer_id')->unsigned();
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateCustomerRoomTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_room');
+        Schema::dropIfExists('rents');
     }
 }
