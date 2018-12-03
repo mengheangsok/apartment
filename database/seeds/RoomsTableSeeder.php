@@ -15,7 +15,8 @@ class RoomsTableSeeder extends Seeder
         DB::table('rooms')->insert([
         	'name' => 'Room Default',
         	'price' => 500,
-        	'description' => 'This is the content description',
+            'description' => 'This is the content description',
+            'category_id' => factory(\App\Category::class)->id,
         ]);
     }
 }

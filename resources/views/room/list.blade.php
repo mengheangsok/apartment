@@ -12,15 +12,15 @@
 
 @section('content')
 
-	<h3 class="float-left">Rooms</h3>
+	<h3 class="float-left">{{ __('room.room') }}</h3>
 	<a href="{{ url('/room/create') }}" class="btn btn-primary float-right">Create</a>
 	<div class="clearfix"></div>
 	<table class="table mt-3">
 		<thead>
 			<tr>
 				<th>#</th>
-				<th>Category</th>
-				<th>Name</th>
+				<th>{{ __('room.category') }}</th>
+				<th>{{__('room.name')}}</th>
 				<th>Price</th>
 				<th>Description</th>
 				<th>Option</th>

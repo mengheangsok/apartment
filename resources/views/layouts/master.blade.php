@@ -21,8 +21,8 @@
 </head>
 <body>
 @include('layouts.nav')
-
 <div class="container">
+    {{ __('general.local_notify',['lang' => __('general.'.session('local')) ]) }}
     <br>
 
     @yield('content')

@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcomePage');
 
+Route::get('/config/change-local/{local}','ConfigController@changeLocal');
 
 Route::prefix('/welcome')->group(function(){
 	
@@ -30,7 +31,7 @@ Route::prefix('/welcome')->group(function(){
 
 Route::post('/logintest','LoginController@authenticate')->name('logintest');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','checkLocal'])->group(function () {
 
 Route::get('/room','RoomController@list');
 Route::get('/room/create','RoomController@create');
