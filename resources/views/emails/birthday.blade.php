@@ -1,0 +1,1 @@
+<h1>Happy Birthday, {{ $user->name }}</h1>

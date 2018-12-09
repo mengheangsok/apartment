@@ -14,7 +14,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\Setup::class,
-        Commands\Uninstall::class
+        Commands\Uninstall::class,
     ];
 
     /**
@@ -24,9 +24,8 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
-        $schedule->command('inspire')
-                 ->hourly();
+    {        
+        $schedule->command('check-birthday')->sendOutputTo('test.txt');
     }
 
     /**

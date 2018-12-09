@@ -3,7 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use App\Mail\Birthday;
+use App\User;
+use Mail;
 class AlertBirthday extends Command
 {
     /**
@@ -37,9 +39,13 @@ class AlertBirthday extends Command
      */
     public function handle()
     {
-        $users = App\User::all();
-
-        
+        $users = User::all();
+        foreach($users as $user) {
+            if( date('m-d',strtotime('+1 days')) == date('m-d',strtotime($user->date_of_birth))){
+              
+                Mail::to($user->email)->send(new Birthday($user));
+            }
+        }       
 
     }
 }
