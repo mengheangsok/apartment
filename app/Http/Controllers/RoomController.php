@@ -13,6 +13,8 @@ class RoomController extends Controller
 {
 	public function list(Request $request){
 
+	//	$this->authorize('view',Room::class);
+
 	//	$rooms = DB::table('rooms')->paginate(2);
 		$rooms = Room::paginate(2);
 		

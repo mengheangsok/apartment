@@ -13,4 +13,5 @@ class Room extends Model
     public function customer() {
         return $this->belongsToMany('App\Customer');
     }
+    
 }

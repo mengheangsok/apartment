@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rent extends Model
 {
     public function room() {
-        return $this->hasMany('App\Room');
+        return $this->belongsTo('App\Room');
     }
 
     public function customer() {
