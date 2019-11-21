@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Location extends Model
 {
-    
-    public function user(){
+    public function user()
+    {
         return $this->belongsToMany('App\User');
     }
 }

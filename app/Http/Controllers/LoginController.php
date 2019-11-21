@@ -7,15 +7,14 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    
     public function authenticate(Request $request)
     {
         $credentials = $request->only('email', 'password');
-    
+
         if (Auth::attempt($credentials)) {
             // Authentication passed...
 
-            if(Auth::user()->status == 'inactive'){
+            if (Auth::user()->status == 'inactive') {
                 Auth::logout();
 
                 return redirect('/login')->withMessage('Your account is inactive');
