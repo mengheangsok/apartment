@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Category;
-
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -17,7 +16,7 @@ class CategoryController extends Controller
     {
         $categories = Category::paginate(2);
 
-        return view('category.list',compact('categories'));
+        return view('category.list', compact('categories'));
     }
 
     /**
@@ -33,19 +32,20 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|max:10'
-        ],[
-            'name.required' => 'ទាមទារ', 
+            'name' => 'required|max:10',
+        ], [
+            'name.required' => 'ទាមទារ',
         ]);
 
         $category = Category::create([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
         return redirect('/category/create');
@@ -54,7 +54,8 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -65,48 +66,51 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $category = Category::find($id);
 
-        return view('category.edit',compact('category'));
+        return view('category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|max:10'
-        ],[
-            'name.required' => 'ទាមទារ', 
+            'name' => 'required|max:10',
+        ], [
+            'name.required' => 'ទាមទារ',
         ]);
 
         $category = Category::find($id)
                     ->fill($request->all())
                     ->save();
 
-        return redirect('/category')->with('message','Successfully Updated');
+        return redirect('/category')->with('message', 'Successfully Updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $category = Category::whereId($id)->delete();
 
-        return redirect('/category')->with('message','Successfully Deleted');
+        return redirect('/category')->with('message', 'Successfully Deleted');
     }
 }

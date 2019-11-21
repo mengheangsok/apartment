@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\User;
-use App\Location;
 use App\Http\Requests\UserRequest;
-
+use App\Location;
+use App\User;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -19,7 +18,7 @@ class UserController extends Controller
     {
         $users = User::paginate(2);
 
-        return view('user.list',compact('users'));
+        return view('user.list', compact('users'));
     }
 
     /**
@@ -29,15 +28,16 @@ class UserController extends Controller
      */
     public function create()
     {
-        $locations = Location::all();;
+        $locations = Location::all();
 
-        return view('user.create',compact('locations'));
+        return view('user.create', compact('locations'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(UserRequest $request)
@@ -55,7 +55,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -66,7 +67,8 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,14 +77,15 @@ class UserController extends Controller
         $locations = Location::all();
         $user = User::find($id);
 
-        return view('user.edit',compact('locations','user'));
+        return view('user.edit', compact('locations', 'user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UserRequest $request, $id)
@@ -100,7 +103,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

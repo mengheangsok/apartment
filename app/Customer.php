@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    public function rent() {
+    public function rent()
+    {
         return $this->hasMany('App\Rent');
     }
 }

@@ -15,37 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcomePage');
 
-Route::get('/config/change-local/{local}','ConfigController@changeLocal');
+Route::get('/config/change-local/{local}', 'ConfigController@changeLocal');
 
-Route::prefix('/welcome')->group(function(){
-	
-	Route::get('/{id}', function () {
-	    return view('welcome');
-	})->name('welcomePage');
+Route::prefix('/welcome')->group(function () {
+    Route::get('/{id}', function () {
+        return view('welcome');
+    })->name('welcomePage');
 
-	Route::post('/create', function () {
-	    return view('welcome');
-	})->name('welcomePage');
-
+    Route::post('/create', function () {
+        return view('welcome');
+    })->name('welcomePage');
 });
 
-Route::post('/logintest','LoginController@authenticate')->name('logintest');
+Route::post('/logintest', 'LoginController@authenticate')->name('logintest');
 
-Route::middleware(['auth','checkLocal'])->group(function () {
+Route::middleware(['auth', 'checkLocal'])->group(function () {
+    Route::get('/room', 'RoomController@list');
+    Route::get('/room/create', 'RoomController@create');
+    Route::post('/room/store', 'RoomController@store');
+    Route::get('/room/edit/{id}', 'RoomController@edit');
+    Route::patch('/room/update/{id}', 'RoomController@update');
+    Route::delete('/room/delete/{id}', 'RoomController@delete');
 
-Route::get('/room','RoomController@list');
-Route::get('/room/create','RoomController@create');
-Route::post('/room/store','RoomController@store');
-Route::get('/room/edit/{id}','RoomController@edit');
-Route::patch('/room/update/{id}','RoomController@update');
-Route::delete('/room/delete/{id}','RoomController@delete');
-
-Route::resource('/category','CategoryController');
-Route::resource('/user','UserController');
-Route::resource('/rent','RentController');
-
+    Route::resource('/category', 'CategoryController');
+    Route::resource('/user', 'UserController');
+    Route::resource('/rent', 'RentController');
 });
-
 
 Auth::routes();
 

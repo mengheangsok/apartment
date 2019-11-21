@@ -24,9 +24,9 @@ class RentRequest extends FormRequest
     public function rules()
     {
         return [
-            'room' => 'required|exists:rooms,id',
+            'room'     => 'required|exists:rooms,id',
             'customer' => 'required|exists:customers,id',
-            'price' => 'required'
+            'price'    => 'required',
         ];
     }
 }
