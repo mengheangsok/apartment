@@ -1,7 +1,7 @@
-<?php 
+<?php
 
 return [
-    'room' => 'Rooms',
+    'room'     => 'Rooms',
     'category' => 'Category',
-    'name' => 'Name',
+    'name'     => 'Name',
 ];

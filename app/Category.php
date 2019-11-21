@@ -8,11 +8,13 @@ class Category extends Model
 {
     protected $fillable = ['name'];
 
-    public function room(){
-    	return $this->hasMany('App\Room','category_id');
+    public function room()
+    {
+        return $this->hasMany('App\Room', 'category_id');
     }
 
-    public function rental(){
-    	return $this->hasManyThrough('App\Rent','App\Room');
+    public function rental()
+    {
+        return $this->hasManyThrough('App\Rent', 'App\Room');
     }
 }

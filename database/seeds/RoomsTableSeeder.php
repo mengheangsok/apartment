@@ -13,8 +13,8 @@ class RoomsTableSeeder extends Seeder
     public function run()
     {
         DB::table('rooms')->insert([
-        	'name' => 'Room Default',
-        	'price' => 500,
+            'name'        => 'Room Default',
+            'price'       => 500,
             'description' => 'This is the content description',
             'category_id' => factory(\App\Category::class)->id,
         ]);
